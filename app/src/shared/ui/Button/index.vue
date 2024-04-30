@@ -33,6 +33,8 @@ const { modClass, type, onClick } = withDefaults(defineProps<IProps>(), {
   border: 2px solid var(--white);
   background: var(--black);
   color: var(--white);
+  font-size: 16px;
+  text-transform: lowercase;
   cursor: pointer;
   &--danger {
     background: var(--orange);
