@@ -23,6 +23,38 @@ const OPTIONS = {
 
 const $canvas = ref(undefined)
 
+const buildAvatar = (p: p5) => {
+  let centerX = p.width / 2
+  let centerY = p.height / 2
+
+  let backgroundIndex = Math.floor(p.random(0, background.length))
+  let eyesIndex = Math.floor(p.random(0, eyes.length))
+  let glassesIndex = Math.floor(p.random(0, glasses.length))
+  let topIndex = Math.floor(p.random(0, top.length))
+  let mouthIndex = Math.floor(p.random(0, mouth.length))
+  let bodyIndex = Math.floor(p.random(0, body.length))
+  let petIndex = Math.floor(p.random(0, pet.length))
+
+  let offsetEyes = 200
+  let offsetGlasses = 194
+  let offsetTop = 58
+  let offsetMouth = 225
+  let offsetBody = 297
+
+  if (mouth[mouthIndex].height > 60) {
+    offsetMouth = 180
+  }
+
+  p.image(background[backgroundIndex], 0, 0)
+  p.image(head[0], centerX - head[0].width / 2, centerY - head[0].height / 2)
+  p.image(glasses[glassesIndex], centerX - glasses[glassesIndex].width / 2, offsetGlasses)
+  p.image(mouth[mouthIndex], centerX - mouth[mouthIndex].width / 2, offsetMouth)
+  p.image(eyes[eyesIndex], centerX - eyes[eyesIndex].width / 2, offsetEyes)
+  p.image(body[bodyIndex], centerX - body[bodyIndex].width / 2, offsetBody)
+  p.image(top[topIndex], centerX - top[topIndex].width / 2, offsetTop)
+  p.image(pet[petIndex], pet[petIndex].width * -0.3, p.height - pet[petIndex].height * 0.7)
+}
+
 const sketch = (p: p5) => {
   p.setup = () => {
     background.forEach((i) => i.loadPixels())
@@ -35,11 +67,14 @@ const sketch = (p: p5) => {
     pet.forEach((i) => i.loadPixels())
     top.forEach((i) => i.loadPixels())
 
+    p.frameRate(0)
+
     p.createCanvas(OPTIONS.width, OPTIONS.height, $canvas.value)
+
+    buildAvatar(p)
   }
   p.draw = () => {
-    p.background(0)
-    p.fill(255)
+    buildAvatar(p)
   }
   p.preload = () => {
     background.push(p.loadImage('/images/background/Boom.png'))
