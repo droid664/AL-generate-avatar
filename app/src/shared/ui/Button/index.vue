@@ -34,5 +34,9 @@ const { modClass, type, onClick } = withDefaults(defineProps<IProps>(), {
   background: var(--black);
   color: var(--white);
   cursor: pointer;
+  &--danger {
+    background: var(--orange);
+    border: none;
+  }
 }
 </style>
