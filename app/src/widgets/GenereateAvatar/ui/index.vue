@@ -3,16 +3,19 @@
     <canvas ref="$canvas"></canvas>
     <div class="generate-avatar__btn-group">
       <Button :onClick="refreshAvatar" modClass="danger">
-        <img src="/icons/refresh.svg" alt="Обновить" /> Обновить
+        <img src="/icons/refresh.svg" alt="Обновить" />
+        Обновить
       </Button>
+      <AddToFavorite :getBase64="saveCanvas" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import p5 from 'p5'
-import { ref } from 'vue'
+import { Ref, ref } from 'vue'
 import { Button } from '../../../shared/'
+import { AddToFavorite } from '../../../features/AddToFavorite'
 
 const background: p5.Image[] = []
 const body: p5.Image[] = []
@@ -29,7 +32,7 @@ const OPTIONS = {
   height: 440,
 }
 
-const $canvas = ref(undefined)
+const $canvas = ref() as Ref<HTMLCanvasElement>
 
 const buildAvatar = (p: p5) => {
   let centerX = p.width / 2
@@ -146,6 +149,10 @@ const app = new p5(sketch)
 
 const refreshAvatar = () => {
   app.redraw()
+}
+
+const saveCanvas = (): string => {
+  return $canvas.value.toDataURL()
 }
 </script>
 
