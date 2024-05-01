@@ -1,5 +1,8 @@
 <template>
-  <Button :onClick="handleClick">Удалить</Button>
+  <Button :onClick="handleClick">
+    <img src="/icons/trash.svg" alt="удалить" />
+    Удалить
+  </Button>
 </template>
 
 <script setup lang="ts">
@@ -13,6 +16,10 @@ const { id } = defineProps<{
 const favoritesStore = FavoritesModel()
 
 const handleClick = () => {
+  const isConfirm = confirm('Вы действительно хотите удалить изображение?')
+
+  if (!isConfirm) return
+
   favoritesStore.deleteFavorite(id)
 }
 </script>

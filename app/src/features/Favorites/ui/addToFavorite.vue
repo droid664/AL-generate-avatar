@@ -1,5 +1,8 @@
 <template>
-  <Button :onClick="handleClick">в избранное</Button>
+  <Button :onClick="handleClick">
+    в избранное
+    <img src="/icons/like.svg" alt="лайк" />
+  </Button>
 </template>
 
 <script lang="ts" setup>
