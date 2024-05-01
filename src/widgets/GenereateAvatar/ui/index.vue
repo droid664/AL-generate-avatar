@@ -63,7 +63,10 @@ const buildAvatar = (p: p5) => {
   p.image(eyes[eyesIndex], centerX - eyes[eyesIndex].width / 2, offsetEyes)
   p.image(body[bodyIndex], centerX - body[bodyIndex].width / 2, offsetBody)
   p.image(top[topIndex], centerX - top[topIndex].width / 2, offsetTop)
-  p.image(pet[petIndex], pet[petIndex].width * -0.3, p.height - pet[petIndex].height * 0.7)
+
+  p.rotate(p.radians(-20))
+
+  p.image(pet[petIndex], pet[petIndex].width * -0.7, p.height - pet[petIndex].height * 0.6)
 }
 
 const sketch = (p: p5) => {
