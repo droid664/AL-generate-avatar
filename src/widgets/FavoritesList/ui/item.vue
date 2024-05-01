@@ -1,6 +1,6 @@
 <template>
   <div class="favorites-list__item">
-    <img :src="src" alt="" />
+    <img @click="downloadImage" :src="src" alt="" />
     <div class="favorites-list__btn-group">
       <DeleteFavorite :id="id" />
     </div>
@@ -9,11 +9,16 @@
 
 <script setup lang="ts">
 import DeleteFavorite from '../../../features/Favorites/ui/deleteFavorite.vue'
+import { createSaveLink } from '../../../shared'
 
 const { src } = defineProps<{
   id: string
   src: string
 }>()
+
+const downloadImage = () => {
+  createSaveLink(src, 'avatar', 'png')
+}
 </script>
 
 <style lang="scss" scoped>
