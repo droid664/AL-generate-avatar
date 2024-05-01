@@ -1,6 +1,6 @@
 <template>
   <div class="generate-avatar">
-    <canvas ref="$canvas"></canvas>
+    <canvas @click="downloadImage" ref="$canvas"></canvas>
     <div class="generate-avatar__btn-group">
       <Button :onClick="refreshAvatar" modClass="danger">
         <img src="/icons/refresh.svg" alt="Обновить" />
@@ -16,6 +16,7 @@ import p5 from 'p5'
 import { Ref, ref } from 'vue'
 import { Button } from '../../../shared/'
 import { AddToFavorite } from '../../../features/Favorites/'
+import { createSaveLink } from '../../../shared/uttils/createSaveLink'
 
 const background: p5.Image[] = []
 const body: p5.Image[] = []
@@ -156,6 +157,10 @@ const refreshAvatar = () => {
 
 const saveCanvas = (): string => {
   return $canvas.value.toDataURL()
+}
+
+const downloadImage = () => {
+  createSaveLink($canvas.value.toDataURL(), 'avatar', 'png')
 }
 </script>
 
