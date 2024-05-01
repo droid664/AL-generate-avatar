@@ -1,3 +1,5 @@
-import AddToFavorite from './ui/index.vue'
+import AddToFavorite from './ui/addToFavorite.vue'
+import DeleteFavorite from './ui/deleteFavorite.vue'
 
-export { AddToFavorite }
+export { AddToFavorite, DeleteFavorite }
+export * from './model'

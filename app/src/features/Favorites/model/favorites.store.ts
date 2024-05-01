@@ -21,9 +21,14 @@ export const useFavorites = defineStore(
       alert('Аватар добавлен в избранное!')
     }
 
+    const deleteFavorite = (id: string) => {
+      favorites.value = favorites.value.filter((favorite) => favorite.id !== id)
+    }
+
     return {
       favorites,
       addFavorite,
+      deleteFavorite,
     }
   },
   {
