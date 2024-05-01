@@ -15,7 +15,7 @@
 import p5 from 'p5'
 import { Ref, ref } from 'vue'
 import { Button } from '../../../shared/'
-import { AddToFavorite } from '../../../features/AddToFavorite'
+import { AddToFavorite } from '../../../features/Favorites/'
 
 const background: p5.Image[] = []
 const body: p5.Image[] = []

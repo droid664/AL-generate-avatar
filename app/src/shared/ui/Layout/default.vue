@@ -16,9 +16,6 @@
 
 <style lang="scss" scoped>
 .nav {
-  position: absolute;
-  top: 0;
-  left: 0;
   ul {
     display: flex;
     flex-direction: column;
@@ -38,9 +35,11 @@
   }
 }
 .default-layout {
-  &:has(:not(.index-page)) {
+  &:has(.index-page) {
     .nav {
-      position: static;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
   }
 }
